@@ -3,6 +3,7 @@
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
+set $alt Mod1
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -44,17 +45,26 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 
 #exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
+#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
+bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
 # Audio control for ALSA
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master,0 1+ unmute"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master,0 1- unmute"
-bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master,0 toggle"
+#bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master,0 1+ unmute"
+#bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master,0 1- unmute"
+#bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master,0 toggle"
+
+# Audio control for PulseAudio
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+
+# Audio controls for playerctl
+bindsym $alt+Left exec --no-startup-id playerctl previous
+bindsym $alt+Right exec --no-startup-id playerctl next
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 1; notify-send 'brightness up'"
@@ -71,7 +81,7 @@ bindsym $mod+Shift+F3 exec gksu pcmanfm
 #bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+Shift+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+Shift+d --release exec --no-startup-id "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -198,8 +208,10 @@ assign [class="Firefox"] $ws2
 assign [class="Pcmanfm"] $ws3
 assign [class="Xarchiver"] $ws3
 assign [class="Rambox"] $ws5
-assign [class="Epdfview"] $ws4
+assign [class="okular"] $ws4
+assign [class="qpdfview"] $ws4
 assign [class="OpenOffice 4.1.3"] $ws4
+assign [class="openttd"] $ws6
 assign [class="Slack"] $ws7
 for_window [class="Spotify"] move to workspace $ws8
 
@@ -259,7 +271,7 @@ for_window [class="(?i)System-config-printer.py"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Thus"] floating enable
 for_window [class="Timeset-gui"] floating enable
-for_window [class="(?i)virtualbox"] floating enable
+#for_window [class="(?i)virtualbox"] floating enable
 for_window [class="Xfburn"] floating enable
 
 # all windows have no border 

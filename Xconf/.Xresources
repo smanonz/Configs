@@ -20,11 +20,11 @@ Xft.lcdfilter: lcddefault
 !-----------------
 rofi.color-enabled: true
 
-solarized
-rofi.color-window: #002b37, #002b37, #003642
-rofi.color-normal: #002b37, #819396, #002b37, #003642, #819396
-rofi.color-active: #002b37, #008ed4, #002b37, #003642, #008ed4
-rofi.color-urgent: #002b37, #da4281, #002b37, #003642, #da4281
+!solarized
+!rofi.color-window: #002b37, #002b37, #003642
+!rofi.color-normal: #002b37, #819396, #002b37, #003642, #819396
+!rofi.color-active: #002b37, #008ed4, #002b37, #003642, #008ed4
+!rofi.color-urgent: #002b37, #da4281, #002b37, #003642, #da4281
 
 !TRON style
 !rofi.color-window: #1e1e1e, #a4dfff, #151515
@@ -32,14 +32,38 @@ rofi.color-urgent: #002b37, #da4281, #002b37, #003642, #da4281
 !rofi.color-active: argb:0000000, #6699cc, argb:0000000, #6699cc, #1b2b34
 !rofi.color-urgent: argb:0000000, #e12a36, argb:0000000, #dd2a4b, #1b2b34
 
+rofi.modi: window,drun,run
 
-rofi.font: Terminus(TTF) 12
+rofi.fullscreen: true
+rofi.padding: 370
+
+!rofi.font:	Iosevka 24
+
 rofi.separator-style: none
 rofi.hide-scrollbar: true
-rofi.location:0
-rofi.width: 500
-rofi.lines: 5
-rofi.bw:3
-rofi.yoffset: 26
-rofi.padding: 32
-ied4 rofi.color-urgent: #002b37, #A6AFB8, #002b37, #003642, #da4281
+rofi.bw: 0
+
+rofi.display-drun: run
+rofi.display-run: exec
+
+rofi.terminal: urxvt
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: argb:d42e3440, argb:0000000, #1aa662
+rofi.color-normal: argb:1000000, #84d498, argb:0000000, #23ff77, #2e3440
+rofi.color-active: argb:0000000, #50fa7b, argb:0000000, #85fa86, #2e3440
+rofi.color-urgent: argb:0000000, #1aa662, argb:0000000, #1aa662, #2e3440
+
+!rofi.font: Terminus(TTF) 12
+!rofi.separator-style: none
+!rofi.hide-scrollbar: true
+!rofi.location:0
+!rofi.width: 500
+!rofi.lines: 5
+!rofi.bw:3
+!rofi.yoffset: 26
+!rofi.padding: 32
+!ied4 rofi.color-urgent: #002b37, #A6AFB8, #002b37, #003642, #da4281
